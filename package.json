@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "nodemon server/index.js",
     "start": "node server/index.js",
+    "start:test": "cross-env NODE_ENV=test node server/index.js",
     "cy:open": "cypress open"
   },
   "keywords": [],
@@ -19,8 +20,9 @@
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
-    "cypress": "^13.13.3",
+    "cross-env": "^7.0.3",
+    "cypress": "^13.14.2",
     "nodemon": "^2.0.19",
-    "vite": "^5.4.2"
+    "vite": "^5.4.3"
   }
 }
