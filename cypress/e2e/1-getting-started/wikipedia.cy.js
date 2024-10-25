@@ -6,8 +6,7 @@ context('Pruebas en Wikipedia', () => {
       cy.pause(); // Pausa para ver la ejecución paso a paso
 
       cy.get('a.search-toggle').click();
-      cy.pause();
-      // Esperar que el campo de búsqueda sea visible y escribir "Cypress"
+
       cy.get('input[name="search"]', { timeout: 10000 })
         .should('be.visible')
         .type('Cypress (software){enter}'); // Escribe "Cypress" y presiona Enter
@@ -22,10 +21,26 @@ context('Pruebas en Wikipedia', () => {
 
       cy.pause();
 
-      cy.get('img.mw-logo-wordmark').click(); // Hace clic en el logo de Wikipedia
+      cy.get('img.mw-logo-wordmark').then(($el) => {
+        $el.css({
+          'border': '2px solid red',
+          'background-color': 'yellow',
+          'transition': 'all 0.5s ease',
+        });
+      });
+
+      // Realiza el clic en el logo después de resaltarlo
+      cy.get('img.mw-logo-wordmark').click()
 
       cy.pause();
 
+      cy.get('li#pt-login-2 a').then(($el) => {
+        $el.css({
+          'border': '2px solid red',
+          'background-color': 'yellow',
+          'transition': 'all 0.5s ease',
+        });
+      });
       cy.get('li#pt-login-2 a').click();
 
       // Esperar que la página de inicio de sesión cargue
